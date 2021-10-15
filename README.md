@@ -2,7 +2,7 @@
 Simple game written in python that simulates a horse race and allows the player to bet on a horse.
 
 # Instructions
-Just download the ZIP file and run HorseRace.py from the terminal with
+Just download the ZIP file, extract it and run HorseRace.py from the terminal with
 
 > python3 HorseRace.py
 
