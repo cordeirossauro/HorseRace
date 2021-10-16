@@ -23,7 +23,7 @@ def MountFullTrack(Positions, TrackSize):
     HorseNumber = 1
     for Position in Positions:
         Position = int(Position)
-        FullTrack = FullTrack + str(HorseNumber) + (' ' * Position) + 'o' + (' ' * (TrackSize - Position)) + '\n' + ('-' * TrackSize) + '\n'
+        FullTrack = FullTrack + str(HorseNumber) + (' ' * Position) + 'ox' + (' ' * (TrackSize - Position)) + '\n' + ('-' * TrackSize) + '\n'
         HorseNumber = HorseNumber + 1
         
     FullTrack = FullTrack + TrackBottom
@@ -156,6 +156,8 @@ def StartMenu(SpeedLimit = 10, EnergyLimit = 10, nHorses = 10):
             
         elif Choice == 'start':
             StartRace = True
+            if 'bet' in Options.keys():
+                Bet = -1, -1
             
         else:
             print('That\'s not a valid option, try again')
@@ -167,10 +169,10 @@ def Race(TrackSize = 100, nHorses = 10):
     Horses, Bet = StartMenu()
     BetAmount, BetNumber = Bet
     
-    print('Very well, give us a second to prepare the race!\n')
+    print('Very well, give us a second to prepare the race!')
     Positions = np.zeros(nHorses)
     isFinished = False
-    time.sleep(1)
+    time.sleep(2)
     
     os.system('clear')
     Countdown = [5,4,3,2,1]
@@ -191,13 +193,13 @@ def Race(TrackSize = 100, nHorses = 10):
             
     Winner = int(Positions.argmax() + 1)
     print('The race is over! Horse number ' + str(Winner) + ' is the winner!')
-    if BetNumber == Winner:
+    if (BetNumber == Winner):
         print('Congratulations, your horse won the race!')
         print('Your bet of ' + str(BetAmount) + ' credits made you ' + str(BetAmount * 2) + ' credits!')
         Money = CountMoney()
         Money = Money + BetAmount * 2
         SaveMoney(Money)
-    else:
+    elif (BetNumber != -1):
         print('Oof! Your horse ' + str(BetNumber) + ' did not win the race... Better luck next time.')
     
 def MainGame():
