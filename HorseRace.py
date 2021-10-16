@@ -109,7 +109,7 @@ def BribeMenu(Horses):
             time.sleep(1)
     return Horses
 
-def StartMenu(SpeedLimit = 10, EnergyLimit = 10, nHorses = 10):
+def StartMenu(SpeedLimit = 5, EnergyLimit = 15, nHorses = 10):
     Horses = GenerateHorses(nHorses, SpeedLimit, EnergyLimit)
     Options = {'bet': '- Bet on a horse',
                'bribe': '- Bribe one of the workers (opens another menu)',
@@ -118,7 +118,7 @@ def StartMenu(SpeedLimit = 10, EnergyLimit = 10, nHorses = 10):
     StartRace = False
     while StartRace == False:
         os.system('clear')
-        print('Hello, and welcome to the horse race!\n')
+        print('Hello, and welcome to the horse race! (Please maximize your terminal for a better experice)\n')
         PrintOptions(Options)
         Money = CountMoney()
         Choice = input('You currently have ' + str(Money) + ' credits, what would you like to do? (bet/bribe/start)\n').lower()
@@ -165,7 +165,7 @@ def StartMenu(SpeedLimit = 10, EnergyLimit = 10, nHorses = 10):
     return Horses, Bet
 
 
-def Race(TrackSize = 100, nHorses = 10):
+def Race(TrackSize = 150, nHorses = 10):
     Horses, Bet = StartMenu()
     BetAmount, BetNumber = Bet
     
@@ -183,11 +183,12 @@ def Race(TrackSize = 100, nHorses = 10):
     while isFinished == False:
         MountFullTrack(Positions, TrackSize)
         PrintTrack(Positions, TrackSize)
-        time.sleep(1)
+        time.sleep(0.2)
         Positions = MoveHorses(Positions, Horses)
         if Positions.max() >= TrackSize:
             isFinished = True
-            
+            os.system('clear')
+            PrintTrack(Positions, TrackSize)
         if isFinished == False:
             os.system('clear')
             
