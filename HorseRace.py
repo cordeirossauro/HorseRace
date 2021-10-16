@@ -109,7 +109,7 @@ def BribeMenu(Horses):
             time.sleep(1)
     return Horses
 
-def StartMenu(SpeedLimit = 10, EnergyLimit = 5, nHorses = 10):
+def StartMenu(SpeedLimit = 10, EnergyLimit = 10, nHorses = 10):
     Horses = GenerateHorses(nHorses, SpeedLimit, EnergyLimit)
     Options = {'bet': '- Bet on a horse',
                'bribe': '- Bribe one of the workers (opens another menu)',
