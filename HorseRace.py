@@ -183,7 +183,7 @@ def Race(TrackSize = 150, nHorses = 10):
     while isFinished == False:
         MountFullTrack(Positions, TrackSize)
         PrintTrack(Positions, TrackSize)
-        time.sleep(0.2)
+        time.sleep(0.1)
         Positions = MoveHorses(Positions, Horses)
         if Positions.max() >= TrackSize:
             isFinished = True
